@@ -1,0 +1,26 @@
+{
+	"manifest_version": 2,
+	"name": "zhihuTimeLine",
+	"version": "0.1",
+	"permissions": ["storage"],
+	"background": {
+		"scripts":["background.js", "jquery.min.js"],
+		"persistent": true
+	},
+	"content_scripts": [
+		{
+			"matches": ["http://www.zhihu.com/"],
+			"js": ["jquery.min.js", "mainPage.js"]
+		},
+		{
+			"matches": ["https://www.zhihu.com/people/*/following"],
+      		"all_frames": true,
+			"js": ["jquery.min.js", "followingPage.js", "waitForKeyElements.js"]
+		},
+		{
+			"matches": ["https://www.zhihu.com/people/*/activities"],
+      		"all_frames": true,
+			"js": ["jquery.min.js", "activitiesPage.js", "waitForKeyElements.js"]
+		}
+	]
+}
